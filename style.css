@@ -51,7 +51,7 @@ body{
 #numbers{
     width: 100px;
     height: 100px;
-    background-color: var(--puurple);
+    background-color: var(--purple);
     display: flex;
     align-items: center;
     justify-content: center;
