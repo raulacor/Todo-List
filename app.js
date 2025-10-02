@@ -7,6 +7,7 @@ const addTask = () => {
     if(text){
         tasks.push({text: text, completed: false});
         taskInput.value= "";
+        
         updateTasksList(); 
     }
 };
@@ -25,7 +26,7 @@ const updateTasksList = () => {
             </div>
             <div class="icons">
                 <img src="./img/edit.png onClick="editTask(${index}" />
-                img src="./img/bin.png onClick="deleteTask(${index}" />
+                <img src="./img/bin.png onClick="deleteTask(${index}" />
             </div>
         </div>
         `;
