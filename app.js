@@ -8,18 +8,21 @@ const addTask = () => {
         tasks.push({text: text, completed: false});
         taskInput.value= "";
         
-        updateTasksList(); 
+        updateTasksList();
+        updateStats();
     }
 };
 
 const toggleTaskComplete = (index) => {
     tasks[index].completed = !tasks[index].completed;
     updateTasksList();
+    updateStats();
 };
 
 const deleteTask = (index) => {
     tasks.splice(index, 1);
     updateTasksList();
+    updateStats();
 };
 
 const editTask =  (index) => {
@@ -28,7 +31,17 @@ const editTask =  (index) => {
 
      tasks.splice(index, 1) 
      updateTasksList();
-}
+     updateStats();
+};
+
+const updateStats = () => {
+    const completedTasks = tasks.filter(task => task.completed).length;
+    const totalTasks = tasks.length;
+    const progress = (completedTasks / totalTasks)*100;
+    const progressBar = document.getElementById('progress')
+
+    progressBar.style.width= `${progress}% `
+};
 
 const updateTasksList = () => {
     const taskList = document.getElementById('task-list')
@@ -47,7 +60,7 @@ const updateTasksList = () => {
                 <img src="./img/bin.png" onClick="deleteTask(${index})" />
             </div>
         </div>
-        `;dads
+        `;
         listItem.addEventListener("change", () => toggleTaskComplete(index));
         taskList.append(listItem);
     });
