@@ -47,8 +47,7 @@ const updateTasksList = () => {
                 <img src="./img/bin.png" onClick="deleteTask(${index})" />
             </div>
         </div>
-        `;
-
+        `;dads
         listItem.addEventListener("change", () => toggleTaskComplete(index));
         taskList.append(listItem);
     });
