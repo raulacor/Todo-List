@@ -12,6 +12,24 @@ const addTask = () => {
     }
 };
 
+const toggleTaskComplete = (index) => {
+    tasks[index].completed = !tasks[index].completed;
+    updateTasksList();
+};
+
+const deleteTask = (index) => {
+    tasks.splice(index, 1);
+    updateTasksList();
+};
+
+const editTask =  (index) => {
+    const taskInput = document.getElementById('taskInput'); 
+    taskInput.value = tasks[index].text;
+
+     tasks.splice(index, 1) 
+     updateTasksList();
+}
+
 const updateTasksList = () => {
     const taskList = document.getElementById('task-list')
     taskList.innerHTML = ''
@@ -25,10 +43,10 @@ const updateTasksList = () => {
                 <p>${task.text}</p>
             </div>
             <div class="icons">
-                <img src="./img/edit.png" onClick="editTask(${index}" />
-                <img src="./img/bin.png" onClick="deleteTask(${index}" />
+                <img src="./img/edit.png" onClick="editTask(${index})" />
+                <img src="./img/bin.png" onClick="deleteTask(${index})" />
             </div>
-        </div>ß
+        </div>
         `;
 
         listItem.addEventListener("change", () => toggleTaskComplete(index));
