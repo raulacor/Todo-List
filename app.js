@@ -1,4 +1,19 @@
+document.addEventListener("DOMContentLoaded", () => {
+    const storedTasks = JSON.parse(localStorage.getItem('tasks'));
+
+    if (storedTasks){
+        storedTasks.forEach((task) => tasks.push(task));
+        updateTasksList();
+        updateStats();
+    };
+});
+
+
 let tasks = [];
+
+const saveTask = () => {
+    localStorage.setItem("tasks", JSON.stringify(tasks))
+}
 
 const addTask = () => {
     const taskInput = document.getElementById('taskInput');
@@ -10,6 +25,7 @@ const addTask = () => {
         
         updateTasksList();
         updateStats();
+        saveTask();
     }
 };
 
@@ -17,12 +33,14 @@ const toggleTaskComplete = (index) => {
     tasks[index].completed = !tasks[index].completed;
     updateTasksList();
     updateStats();
+    saveTask();
 };
 
 const deleteTask = (index) => {
     tasks.splice(index, 1);
     updateTasksList();
     updateStats();
+    saveTask();
 };
 
 const editTask =  (index) => {
@@ -32,6 +50,7 @@ const editTask =  (index) => {
      tasks.splice(index, 1) 
      updateTasksList();
      updateStats();
+     saveTask();
 };
 
 const updateStats = () => {
